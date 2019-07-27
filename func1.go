@@ -8,7 +8,13 @@ func main() {
     paintNeeded(5.0, 3.3)
 }
 
-func paintNeeded(width float64, height float64) {
+// function name (input vars with types) return type {
+// body of the function
+// return some_stuff
+// }
+
+func paintNeeded(width float64, height float64) float64 {
     area := width * height
     fmt.Printf("%.2f liters needed\n", area/10.0)
+    return area/10.0
 }
