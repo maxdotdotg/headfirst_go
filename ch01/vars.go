@@ -4,14 +4,19 @@ import "fmt"
 
 func main() {
 	// long way to declare vars
-	var quantity int
-	var length, width float64
-	var customerName string
+	// var quantity int
+	// var length, width float64
+	// var customerName string
 
 	// assign values
-	quantity = 4
-	length, width = 1.2, 2.4
-	customerName = "damon"
+	// quantity = 4
+	// length, width = 1.2, 2.4
+	// customerName = "damon"
+
+	// assign values the short way
+	quantity := 4
+	length, width := 1.2, 2.4
+	customerName := "damon"
 
 	// do it in one step and skip the type declaration
 	var otherCustomer = "tim"
