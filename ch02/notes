@@ -1,0 +1,13 @@
+methods - functions associated with given _types_?
+I forgot, types are _everything_ in go, EVERYTHING
+
+"methods belong to an individual value"
+vs
+"functions ... [belong] to a package"
+
+error is returned all the time, and handling it is hard to remember.
+if err != nil, then log it, else do your thing
+
+how would you trim newlines from a string? LOOK AT STACK OVERFLOW, IT'S FUCKING TEDIOS AND INCONSISTENT, BECAUSE YOU HAVE TO MAKE IT UP EACH AND EVERY TIME WHAT THE ACTUAL FUCK
+
+
