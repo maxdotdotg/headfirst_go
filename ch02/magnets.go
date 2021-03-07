@@ -1,29 +1,28 @@
 package main
 
 import (
-	//	"bufio"
+	"bufio"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
+	fmt.Print("Enter a filename: ")
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		// log the error and break
+		log.Fatal(err)
+	}
+	// clean up filename
+	filename := strings.TrimSpace(input)
 
-	// all of this doesn't work, because stripping newlines
-	// is fucking tedious
-
-	// fmt.Print("Enter a filename: ")
-	// reader := bufio.NewReader(os.Stdin)
-	// filename, err := reader.ReadString('\n')
-	// if err != nil {
-	// 	// log the error and break
-	// 	log.Fatal(err)
-	// }
-	//fileinfo, err := os.Stat(filename)
-
-	fileinfo, err := os.Stat("notes")
+	fileinfo, err := os.Stat(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Println(fileinfo.Size())
 }
