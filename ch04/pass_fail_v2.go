@@ -4,7 +4,11 @@ package main
 
 import (
 	"fmt"
-	"keyboard"
+	// this is the local package, keyboard
+	// "keyboard"
+
+	// use a 3rd party package for it instead
+	"github.com/headfirstgo/keyboard"
 	"log"
 )
 

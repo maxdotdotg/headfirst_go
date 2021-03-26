@@ -1,5 +1,4 @@
-// read stdin from the keyboard
-
+// Package keyboard reads user input from the keyboard
 package keyboard
 
 import (
@@ -9,8 +8,9 @@ import (
 	"strings"
 )
 
+// GetFloat reads a float from stdin
+// returns a float64 and any errors hit
 func GetFloat() (float64, error) {
-	// read from stdin and return a float
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {

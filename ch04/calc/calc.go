@@ -1,3 +1,4 @@
+// Package calc does addition and subtraction
 package calc
 
 func Add(first float64, second float64) float64 {
