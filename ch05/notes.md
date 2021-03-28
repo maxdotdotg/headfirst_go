@@ -33,5 +33,7 @@
     > go install github.com/headfirstgo/average
     the workaround for this is to set `GO111MODULE=off` when running `go install`
     https://blog.golang.org/go116-module-changes
+- similar for `go run` after I upgraded, which may not have been so smart... now I need `GO111MODULE=off` when I use custom libs (libs from `~/go/src`) and that's... not great? I feel like I messed something up here, IDK
+
 
 

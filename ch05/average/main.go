@@ -1,10 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/headfirstgo/datafile"
+	"log"
+)
 
 func main() {
+	// commented out to use datafile
 	// set up the array
-	numbers := [3]float64{71.8, 56.2, 89.5}
+	// numbers := [3]float64{71.8, 56.2, 89.5}
+
+	// double-check the path
+	numbers, err := datafile.GetFloats("../data.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// create an empty var for sum and average
 	var sum float64 = 0
