@@ -14,7 +14,8 @@ func GetFloats(fileName string) ([]float64, error) {
 	var numbers []float64
 	file, err := os.Open(fileName)
 	if err != nil {
-		return numbers, err
+		// return nil (zero value for a slice) instead of bad data
+		return nil, err
 	}
 
 	// scan the file and convert the string to float64
@@ -23,7 +24,8 @@ func GetFloats(fileName string) ([]float64, error) {
 	for scanner.Scan() {
 		number, err := strconv.ParseFloat(scanner.Text(), 64)
 		if err != nil {
-			return numbers, err
+			// return nil (zero value for a slice) instead of bad data
+			return nil, err
 		}
 		numbers = append(numbers, number)
 	}
