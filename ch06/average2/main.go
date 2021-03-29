@@ -18,9 +18,7 @@ func main() {
 	// take args and skip the first,
 	// which is the path to the bin itself
 	arguments := os.Args[1:]
-
-	// create an empty var for sum and average
-	var sum float64 = 0
+	var numbers []float64
 
 	// convert the slice of strings into a slice of float64
 	for _, argument := range arguments {
@@ -28,14 +26,20 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		numbers = append(numbers, number)
+	}
+
+	// print float with 2 decimal places
+	// add an ellipsis (...) following the slice you want to use in place of variadic arguments.
+	// ch06
+	fmt.Printf("average is: %0.2f\n", average(numbers...))
+}
+
+// average takes a slice of float64s and returns their average as a float64
+func average(numbers ...float64) float64 {
+	var sum float64 = 0
+	for _, number := range numbers {
 		sum += number
 	}
-	fmt.Printf("total is: %0.2f\n", sum)
-
-	sampleCount := float64(len(arguments))
-
-	// calculate average
-	average := sum / sampleCount
-	// print float with 2 decimal places
-	fmt.Printf("average is: %0.2f\n", average)
+	return sum / float64(len(numbers))
 }

@@ -45,3 +45,26 @@
     <nil>
     &{0xc0000ba120}
     ```
+- variadic functions: functions that take any number of params, like `fmt.Println()`
+    ```
+    func newFunc(param1 int, param2 ... string) {
+    // do things here
+    }
+    ```
+    yes, the elipses are actually required
+    > use an ellipsis (...) before the type of the last (or only) function parameter in the function declaration. ... The last parameter of a variadic function receives the variadic arguments as a slice, which the function can then process like any other slice.
+    ch06
+
+    ```
+    func severalInts(numbers ...int) {
+        fmt.Println(numbers)
+    }
+    func main() {
+        severalInts(1) // prints [1]
+        severalInts(1, 2, 3) // prints [1 2 3]
+    }
+    ```
+
+- I don't really get how this works. I know it _does_, but I don't get why. Is the content/value of the slice being passed?
+    > add an ellipsis (...) following the slice you want to use in place of variadic arguments.
+    > When calling a variadic function, you can use a slice in place of the variadic arguments by typing an ellipsis after the slice: `inRange(1, 10, mySlice...)`
