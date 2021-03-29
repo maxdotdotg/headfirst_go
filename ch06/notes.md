@@ -38,3 +38,10 @@
     // called a "nil slice"
     var notes2 = []string 
     ```
+- fun things about paths: go apparently doesn't expand bash env vars like `$HOME` or the home shortcut `~`, so I have to pass the absolute path to `datafile.GetFloats()` if I want it to work. This feels kinda silly, like there's something I'm missing, but it's what I got...
+    ```
+    ➜  ch05 git:(main) ✗ go run file.go
+    2021/03/28 20:28:10 open ~/go/head-first-go/ch05/data.txt: no such file or directory
+    <nil>
+    &{0xc0000ba120}
+    ```
