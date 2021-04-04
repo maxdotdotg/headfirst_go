@@ -4,7 +4,7 @@
     // variable myMap is a map that uses strings for keys
     // and float64s for values
 
-    // also, we gotta use make
+    // MUST use _make_, otherwise it's a nil map
     var ranks map[string] int
     ranks = make(map[string] int)
 
@@ -16,4 +16,10 @@
     ```
     var nilMap map[int]string
     fmt.Printf("%#v\n", nilMap)
-    nilMap[3] = "three"
+    nilMap[3] = "three" // panic, throws "assignment entry in nil map"
+    ```
+- zero values vs assigned values
+    > accessing a map key optionally returns a second, Boolean value. It will be true if the returned value has actually been assigned to the map, or false if the returned value just represents the default zero value.
+    ch07
+- delete items from maps, `delete(myMap, "some key I told to GTFO")`, no assignment like `append`, curious. Key doesn't have to be a string, just used it for an example, see [`delete_from_map.go`](delete_from_map.go) for more.
+
