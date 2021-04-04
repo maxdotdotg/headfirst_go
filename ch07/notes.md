@@ -22,4 +22,10 @@
     > accessing a map key optionally returns a second, Boolean value. It will be true if the returned value has actually been assigned to the map, or false if the returned value just represents the default zero value.
     ch07
 - delete items from maps, `delete(myMap, "some key I told to GTFO")`, no assignment like `append`, curious. Key doesn't have to be a string, just used it for an example, see [`delete_from_map.go`](delete_from_map.go) for more.
-
+- looping through maps is done the same way as with arrays
+    ```
+    for k, v := range myMap {
+        // do some stuff
+    }
+    ```
+- and it turns out, if you only want _keys_, you can skip the values: `for k := range myMap` etc etc. Note that this does NOT work if you only want the _values_, you still have to use the underscore to skip `for _, v := range myMap`
