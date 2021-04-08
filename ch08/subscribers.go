@@ -26,29 +26,34 @@ func main() {
 	fmt.Println("active?", subscriber_var.active)
 
 	subscriber1 := defaultSubscriber("lily")
+	printInfo(subscriber1)
 	subscriber1.rate = 4.99
 	printInfo(subscriber1)
 
 	subscriber2 := defaultSubscriber("jimmy")
 	printInfo(subscriber2)
 
-	// pass a pointer to the struct
-	applyDiscount(&subscriber2)
+	applyDiscount(subscriber2)
 	printInfo(subscriber2)
 }
 
-func printInfo(s subscriber) {
+// printInfo prints a subscribers attributes
+func printInfo(s *subscriber) {
+	// take a pointer so the whole variable isn't passed around
+	// and here, we're just reading it and printing data to stdout
 	fmt.Println("Subscriber:", s.name)
 	fmt.Println("monthly rate:", s.rate)
 	fmt.Println("active?", s.active)
 }
 
-func defaultSubscriber(name string) subscriber {
+// defaultSubscriber create a subscriber with default attributes
+// and return a pointer to a subscriber struct
+func defaultSubscriber(name string) *subscriber {
 	var s subscriber
 	s.name = name
 	s.rate = 5.99
 	s.active = true
-	return s
+	return &s
 }
 
 // use this function to update the struct

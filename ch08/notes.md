@@ -30,5 +30,6 @@
 - to access a field in a struct that _is_ a pointer: `*myStruct.myField`
 - > Functions receive a copy of the arguments they’re called with, even if they’re a big value like a struct. That’s why, unless your struct has only a couple small fields, it’s often a good idea to pass functions a pointer to a struct, rather than the struct itself. 
 
+    it's cheaper to pass pointers than to pass structs, so do it that way... I guess?
 
 
