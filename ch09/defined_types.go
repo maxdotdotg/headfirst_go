@@ -28,6 +28,20 @@ func main() {
 	busFuel += ToLiters(Gallons(40.0))
 	fmt.Println(carFuel, busFuel)
 
+	// receiver methods for different types
+	// can have the same name
+	soda := Liters(2)
+	fmt.Printf("%0.3f liters equals %0.3f gallons\n", soda, soda.ToGallons())
+	fmt.Printf("%0.3f liters equals %0.3f milliliters\n", soda, soda.ToMilliliters())
+
+	water := Milliliters(500)
+	fmt.Printf("%0.3f milliliters equals %0.3f gallons\n", water, water.ToGallons())
+	fmt.Printf("%0.3f milliliters equals %0.3f liters\n", water, water.ToLiters())
+
+	milk := Gallons(2)
+	fmt.Printf("%0.3f gallons equals %0.3f liters\n", milk, milk.ToLiters())
+	fmt.Printf("%0.3f gallons equals %0.3f milliliters\n", milk, milk.ToMilliliters())
+
 }
 
 func ToGallons(l Liters) Gallons {
@@ -35,5 +49,31 @@ func ToGallons(l Liters) Gallons {
 }
 
 func ToLiters(g Gallons) Liters {
+	return Liters(g * 3.785)
+}
+
+// receiver method, only works on variables of type Liters
+func (l Liters) ToGallons() Gallons {
+	return Gallons(l * 0.264)
+}
+
+// receiver method, only works on variables of type Milliliters
+func (m Milliliters) ToGallons() Gallons {
+	return Gallons(m * 0.000264)
+}
+
+func (l Liters) ToMilliliters() Milliliters {
+	return Milliliters(l * 1000)
+}
+
+func (m Milliliters) ToLiters() Liters {
+	return Liters(m / 1000)
+}
+
+func (g Gallons) ToMilliliters() Milliliters {
+	return Milliliters(g * 3785.41)
+}
+
+func (g Gallons) ToLiters() Liters {
 	return Liters(g * 3.785)
 }

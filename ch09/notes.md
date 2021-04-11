@@ -17,3 +17,8 @@
     value := MyType("a MyType value")
     value.sayHi()
     ```
+
+- > To call a method that requires a pointer receiver, you have to be able to get a pointer to the value. You can only get pointers to values that are stored in variables.
+
+
+
