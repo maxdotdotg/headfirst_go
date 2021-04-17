@@ -40,14 +40,14 @@ func (d *Date) SetDay(day int) error {
 }
 
 // Getter methods, get access to non-exported struct fields
-func (d *Date) GetYear() int {
+func (d *Date) Year() int {
 	return d.year
 }
 
-func (d *Date) GetMonth() int {
+func (d *Date) Month() int {
 	return d.month
 }
 
-func (d *Date) GetDay() int {
+func (d *Date) Day() int {
 	return d.day
 }

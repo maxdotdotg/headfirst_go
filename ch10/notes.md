@@ -5,4 +5,7 @@ By convention, Go setter methods are usually named in the form SetX, where X is 
 
 - > But if any method on a type takes a pointer receiver, convention says that they all should, for consistency’s sake.
 
+    not sure how I feel about that, but OK, I guess?
+
+- encapsulation (controlling access to underlying fields and structs and stuff) gets used when there's a need for validation on those fields, like we did for months in a year
 
