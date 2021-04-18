@@ -8,7 +8,7 @@ type Coordinates struct {
 }
 
 type Landmark struct {
-	Name string
+	name string
 	Coordinates
 }
 
@@ -28,6 +28,14 @@ func (c *Coordinates) SetLongitude(longitude float64) error {
 	return nil
 }
 
+func (l *Landmark) SetName(name string) error {
+	if name == "" {
+		return errors.New("invalid name")
+	}
+	l.name = name
+	return nil
+}
+
 // getter methods
 func (c *Coordinates) Latitude() float64 {
 	return c.latitude
@@ -35,4 +43,8 @@ func (c *Coordinates) Latitude() float64 {
 
 func (c *Coordinates) Longitude() float64 {
 	return c.longitude
+}
+
+func (l *Landmark) Name() string {
+	return l.name
 }

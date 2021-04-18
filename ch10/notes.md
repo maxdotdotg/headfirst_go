@@ -7,5 +7,6 @@ By convention, Go setter methods are usually named in the form SetX, where X is 
 
     not sure how I feel about that, but OK, I guess?
 
-- encapsulation (controlling access to underlying fields and structs and stuff) gets used when there's a need for validation on those fields, like we did for months in a year
-
+- encapsulation is the method used to control access to the underlying fields and receiver functions for embedded structs and types. It gets used when there's a need for validation on those fields, like for months in a year
+- when a struct has an embedded type, you can call any exported receiver functions associated with that embedded type. See [geo1.go](geo1.go) for an example using the `geo` package
+    > Methods defined on an outer struct type live alongside methods promoted from an embedded type.
