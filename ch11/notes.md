@@ -33,3 +33,19 @@
 
 - if a variable is defined as an interface type, then it's limited to the methods associated with the interface. to give the variable access to methods associated with the concrete type, it needs to be converted using a type assertion
 - `ok` will catch whether or not the type assertion (and I keep wanting to say conversion) is successful, so conditionals based on `ok` can be used
+
+- the error interface
+    ```
+    type error interface {
+        Error string
+    }
+    ```
+    we can create custom errors that use the same interface, see [errors.go](errors.go)
+- also, the `error` interface doesn't need to be imported, it's "part of the 'universe block'", or what I'm used to thinking of as built-ins
+- the stringer interface
+    ```
+    type Stringer interface {
+        String() string
+    }
+    ``` 
+    it allows "any type to decide how it will be displayed when printed", see [stringers.go](stringers.go)

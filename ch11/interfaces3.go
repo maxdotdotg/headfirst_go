@@ -30,6 +30,10 @@ func (t Truck) Steer(direction string) {
 	fmt.Println("Turning", direction)
 }
 
+func (t Truck) LoadCargo(cargo string) {
+	fmt.Println("loading", cargo)
+}
+
 type Vehicle interface {
 	Accelerate()
 	Brake()
@@ -44,4 +48,17 @@ func main() {
 	vehicle = Truck("fjord")
 	vehicle.Brake()
 	vehicle.Steer("right")
+
+	TryVehicle(Truck("fyordz not 150"))
+}
+
+func TryVehicle(vehicle Vehicle) {
+	vehicle.Accelerate()
+	vehicle.Steer("left")
+	vehicle.Steer("right")
+	vehicle.Brake()
+	truck, ok := vehicle.(Truck)
+	if ok {
+		truck.LoadCargo("test cargo")
+	}
 }
