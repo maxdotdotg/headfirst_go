@@ -1,6 +1,8 @@
 package main
 
-import "github.com/headfirstgo/gadget"
+import (
+	"github.com/headfirstgo/gadget"
+)
 
 // "We could define [the Player interface] in the gadget
 // package instead, but defining the interface in the same
@@ -37,4 +39,25 @@ func main() {
 	anotherDevice := gadget.TapeRecorder{}
 	anotherTape := []string{"the island, part ii", "hold your colour", "tarantula"}
 	playList(anotherDevice, anotherTape)
+
+	// this will work at runtime because type conversion is used to access
+	// methods associated with the concrete type
+	TryOut(gadget.TapeRecorder{})
+
+	// this won't work at runtime for the same reason
+	// "panic: interface conversion: main.Player is gadget.TapePlayer,
+	// not gadget.TapeRecorder"
+	TryOut(gadget.TapePlayer{})
+}
+
+func TryOut(player Player) {
+	player.Play("test track")
+	player.Stop()
+
+	// type assertion, now with error handling
+	recorder, ok := player.(gadget.TapeRecorder)
+
+	if ok {
+		recorder.Record()
+	}
 }

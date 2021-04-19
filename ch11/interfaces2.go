@@ -18,6 +18,16 @@ type NoiseMaker interface {
 	MakeSound()
 }
 
+type Robot string
+
+func (r Robot) Walk() {
+	fmt.Println("powering legs")
+}
+
+func (r Robot) MakeSound() {
+	fmt.Println("boop boop")
+}
+
 // and we can have functions that take interfaces as parameters
 func play(n NoiseMaker) {
 	n.MakeSound()
@@ -37,4 +47,11 @@ func main() {
 
 	play(Whistle("Toyco Canary"))
 	play(Horn("Toyco Blaster"))
+
+	// type assertions
+	var noiseMaker NoiseMaker = Robot("Gundam Inc")
+	noiseMaker.MakeSound()
+	var robot Robot = noiseMaker.(Robot)
+	robot.Walk()
+
 }
