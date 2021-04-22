@@ -18,6 +18,8 @@
 - > A concrete type specifies not only what its values can do (what methods you can call on them), but also what they are: they specify the underlying type that holds the value’s data.
     > Interface types don’t describe what a value is: they don’t say what its underlying type is, or how its data is stored. They only describe what a value can do: what methods it has.
 
+- > When you have a variable of an interface type, the only methods you can call on it are those defined in the interface
+
 - type assertions are when you define a variable using an interface and need to access methods associated with the concrete type.
     ```
     // noiseMaker is type NoiseMaker (an interface) that
@@ -33,6 +35,12 @@
 
 - if a variable is defined as an interface type, then it's limited to the methods associated with the interface. to give the variable access to methods associated with the concrete type, it needs to be converted using a type assertion
 - `ok` will catch whether or not the type assertion (and I keep wanting to say conversion) is successful, so conditionals based on `ok` can be used
+    ```
+    robot, ok := noiseMaker.(Robot)
+    if ok != nil {
+        // handle error
+    }
+    ```
 
 - the error interface
     ```
@@ -49,3 +57,11 @@
     }
     ``` 
     it allows "any type to decide how it will be displayed when printed", see [stringers.go](stringers.go)
+
+- the empty interface (used by fmt.Println(), for example)
+    ```
+    type Something interface {}
+    ```
+    > The empty interface doesn’t have any methods that are required to satisfy it, and so every type satisfies it.
+    > If you declare a function that accepts a parameter with the empty interface as its type, then you can pass it values of any type as an argument
+    > [The] empty interface doesn’t have any methods. That means there are no methods you can call on a value with the empty interface type!
