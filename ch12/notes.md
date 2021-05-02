@@ -1,0 +1,1 @@
+- `defer` will run a given line of code when the function exits
