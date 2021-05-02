@@ -25,18 +25,25 @@ func GetFloats(fileName string) ([]float64, error) {
 		return nil, err
 	}
 
+	// make sure the file gets closed
+	defer CloseFile(file)
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		number, err := strconv.ParseFloat(scanner.Text(), 64)
+		// if an error gets thrown here, like a bad line
+		// in scanner, then the file never gets closed
+		// since CloseFile(file) never gets called
 		if err != nil {
 			return nil, err
 		}
 		numbers = append(numbers, number)
 	}
-	CloseFile(file)
 	fmt.Println(numbers)
-	if scanner.Err != nil {
-		fmt.Println("scanner err:", scanner.Err())
+
+	// this was breaking because I was using
+	// scanner.Err instead of scanner.Err()
+	// AHHHHHH
+	if scanner.Err() != nil {
 		return nil, scanner.Err()
 	}
 	return numbers, nil
