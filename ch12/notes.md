@@ -1,1 +1,3 @@
 - `defer` will run a given line of code when the function exits
+- only function calls and method calls can be `defer` d
+- `panic`, we can call it and it'll, you guessed it, panic and exit
