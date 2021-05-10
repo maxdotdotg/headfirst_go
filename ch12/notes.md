@@ -1,3 +1,5 @@
 - `defer` will run a given line of code when the function exits
 - only function calls and method calls can be `defer` d
-- `panic`, we can call it and it'll, you guessed it, panic and exit
+- `panic`, we can call it and it'll, you guessed it, panic, dump a stack trace, and exit
+- when `panic` gets called, all `defer` d functions run before exiting
+- `recover` handles `panic`, and can allow the program to still exit with status 0, even when `panic` gets called
