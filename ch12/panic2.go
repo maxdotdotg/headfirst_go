@@ -2,16 +2,18 @@ package main
 
 import "fmt"
 
-func main() {
-	freakOut()
-	fmt.Println("exiting normally")
-}
-
 func calmDown() {
-	recover()
+	p := recover()
+	// assert the type of panic is "error"
+	err, ok := p.(error)
+	if ok {
+		fmt.Println(err.Error())
+	}
 }
 
-func freakOut() {
+func main() {
 	defer calmDown()
-	panic("ohno")
+	err := fmt.Errorf("an error")
+	panic(err)
+
 }

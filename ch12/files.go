@@ -55,6 +55,27 @@ func scanDir(path string) {
 	}
 }
 
+func reportPanic() {
+	p := recover()
+
+	// if recover returns nil, there's no panic to catch
+	if p == nil {
+		return
+	}
+
+	// catch the error thrown in panic and print it
+	err, ok := p.(error)
+	if ok {
+		fmt.Println(err)
+	} else {
+		// if the panic value isn't an error,
+		// resume panic-ing with the same value?
+		panic(p)
+	}
+}
+
 func main() {
+	defer reportPanic()
+	panic("some other err")
 	scanDir("/usr/local/bin/")
 }
